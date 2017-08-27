@@ -1,4 +1,4 @@
-package com.sbt.javaschool;
+package com.sbt.javaschool.sgu_tasks;
 
 import java.util.Scanner;
 import java.util.StringJoiner;
