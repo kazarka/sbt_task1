@@ -12,9 +12,14 @@ public class task1 {
 
         linkedList.add(0, 1);
 
+        linkedList.add(5);
+
+        System.out.println(linkedList.remove(1));
+
         for (Integer value: linkedList) {
             System.out.println(value);
         }
+
     }
 
 }
