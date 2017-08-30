@@ -2,25 +2,25 @@ package com.sbt.javaschool.generics_task;
 
 
 public class Node <E> {
-    private E node;
+    private E value;
     private Node prev;
     private Node next;
 
-    public Node(E node, Node prev, Node next) {
-        this.node = node;
+    public Node(E value, Node prev, Node next) {
+        this.value = value;
         this.prev = prev;
         this.next = next;
     }
 
-    public E getNode() {
-        return node;
+    public E getValue() {
+        return value;
     }
 
-    public void setNode(E node) {
-        this.node = node;
+    public void setValue(E value) {
+        this.value = value;
     }
 
-    public Node getPrev() {
+    public Node<E> getPrev() {
         return prev;
     }
 
@@ -28,7 +28,7 @@ public class Node <E> {
         this.prev = prev;
     }
 
-    public Node getNext() {
+    public Node<E> getNext() {
         return next;
     }
 
