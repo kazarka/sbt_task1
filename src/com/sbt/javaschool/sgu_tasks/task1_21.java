@@ -43,7 +43,7 @@ public class task1_21 {
             arr[i] = scanner.nextInt();
         }
 
-        //  Twicely dividing max elements
+        //  Twice dividing max elements
         for (int i = 1; i <= 2; ++i) {
 
             for (Integer ind : getMaxElementsIndices(arr)) {

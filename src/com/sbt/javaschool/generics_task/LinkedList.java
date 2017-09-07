@@ -1,6 +1,5 @@
 package com.sbt.javaschool.generics_task;
 
-import javax.xml.bind.Element;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -135,7 +134,10 @@ public class LinkedList <E> implements List <E> {
 
             curNode.getPrev().setNext(curNode.getNext());
             curNode.getNext().setPrev(curNode.getPrev());
-            curNode = curNode.getNext();
+            Node<E> nextNode = curNode.getNext();
+            curNode.setPrev(nextNode.getPrev());
+            curNode.setNext(nextNode.getNext());
+            curNode.setValue(nextNode.getValue());
 
             return element;
         }

@@ -1,7 +1,6 @@
 package com.sbt.javaschool.generics_task;
 
 import java.util.Collection;
-import java.util.Iterator;
 
 public interface List <E> extends Iterable <E> {
     void add(E e);
