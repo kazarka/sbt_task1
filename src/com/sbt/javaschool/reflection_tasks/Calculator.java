@@ -5,28 +5,38 @@ import java.util.regex.Pattern;
 
 public class Calculator implements ICalculator {
 
-    private double firstNumber;
-    private double secondNumber;
-    private char operation;
+    private Expression expression;
 
-    private boolean parse(String expression) {
+    public Calculator() {
+        this.expression = new Expression();
+    }
+
+    private boolean parse(String expressionString, Expression expression) {
         Pattern pattern = Pattern.compile("\\s*([0-9]+(?:\\.{1}[0-9]+)*)\\s*([\\+\\-\\*\\/])\\s*([0-9]+(?:\\.{1}[0-9]+)*\\s*)");
-        Matcher matcher = pattern.matcher(expression);
+        Matcher matcher = pattern.matcher(expressionString);
 
         boolean matches = matcher.matches();
 
         if (! matches)
             return false;
         else {
-            firstNumber = Double.parseDouble(matcher.group(1));
-            secondNumber = Double.parseDouble(matcher.group(3));
-            operation = matcher.group(2).charAt(0);
+            double firstNumber = Double.parseDouble(matcher.group(1));
+            double secondNumber = Double.parseDouble(matcher.group(3));
+            char operation = matcher.group(2).charAt(0);
+
+            expression.setFirstNumber(firstNumber);
+            expression.setSecondNumber(secondNumber);
+            expression.setOperation(operation);
 
             return true;
         }
     }
 
-    private double performCalc() {
+    private double performCalc(Expression expression) {
+        double firstNumber = expression.getFirstNumber();
+        double secondNumber = expression.getSecondNumber();
+        char operation = expression.getOperation();
+
         switch (operation) {
             case '+':
                 return firstNumber + secondNumber;
@@ -41,10 +51,10 @@ public class Calculator implements ICalculator {
         }
     }
 
-    public double calc(String expression) {
+    public double calc(String expressionString) {
 
-        if (parse(expression))
-            return performCalc();
+        if (parse(expressionString, this.expression))
+            return performCalc(this.expression);
         else
             throw new RuntimeException("Invalid input.");
     }
