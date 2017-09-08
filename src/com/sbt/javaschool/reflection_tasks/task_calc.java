@@ -1,8 +1,11 @@
 package com.sbt.javaschool.reflection_tasks;
 
 import java.lang.reflect.Proxy;
+import java.util.Scanner;
 
 public class task_calc {
+
+    private static String INVALID_INPUT_MESSAGE = "Invalid input.";
 
     public static void main(String[] args) {
 
@@ -13,9 +16,22 @@ public class task_calc {
                         new CalculatorFileCacheHandler(new Calculator())
                 );
 
-        double result = calculator.calc("1.0+1.1");
+        Scanner scanner = new Scanner(System.in);
 
-        System.out.println(result);
+        System.out.println("Provide with expression. Example: 1+1. Operations: +,-,*,/");
+        String input = scanner.nextLine();
+
+        try {
+
+            double result = calculator.calc(input);
+            System.out.println(result);
+        } catch (RuntimeException exception) {
+
+            if (exception.getMessage().equals(INVALID_INPUT_MESSAGE))
+                System.out.println(INVALID_INPUT_MESSAGE);
+            else
+                throw exception;
+        }
     }
 
 }

@@ -3,8 +3,6 @@ package com.sbt.javaschool.reflection_tasks;
 import com.sbt.javaschool.MyUtils;
 import javafx.util.Pair;
 
-import static com.sbt.javaschool.MyUtils.defineSmallestAndBiggest;
-
 public class Expression {
     private double firstNumber;
     private double secondNumber;
@@ -52,7 +50,7 @@ public class Expression {
     public boolean equals(Object o) {
 
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null /*|| getClass() != o.getClass()*/) return false;
 
         Expression that = (Expression) o;
 
